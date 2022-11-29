@@ -1,6 +1,6 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
+title: "African American in prison proportion"
+author: "Kevin Fu"
 date: '2022-11-01'
 output: html_document
 ---
@@ -11,35 +11,54 @@ source("../source/analysis.R")
 ```
 
 ## Abstract 
-[TODO: Include a short abstract (about 50 words)]
-
-# Test (TODO: Remove before submission!!)
-```{r echo=FALSE}
-q1_string <- test_query1()
-num <- 5
-```
-As you know, this is a markdown report. The [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is **useful!**
-
-* Here's a test of a dynamic variable. Say **"`r q1_string`!!!** 
-* Here's another test. A vector
-of numbers: `r test_query2(num)`.
-
-Recall that _{r echo=TRUE}_ can be used to display the code, 
-which is very useful when developing and debugging a report. Here's an example: 
-
-```{r echo=TRUE}
-num <- 5
-sum <- sum(test_query2(num))
-print(sum)
-```
+Inequality in the incarceration system in the U.S. has a long history, and this assignment is about finding the patterns of inequality from the incarceration data provided by Vera. The data set includes incarceration information in each county in the U.S. and will be used to find the inequality trend in the incarceration field.
 
 ## Introduction 
-[TODO]
+Incarceration trends data in the U.S. collected by Vera included two parts, the census of jails data that covers all prisons and has been conducted every five to eight years since 1970, and the Annual Survey of Jails data that covers about one-third of jails(including almost all the largest prisons) that has been conducted in non-census years since 1982.
+Inequality patterns are hidden in the incarceration trends data because racism and injustice behavior have inveteracy in the incarceration field in America. For example, according to research of Vera, African Americans took up 13% of the population in the United States, but they took over 35% of the incarcerated population. And also, more than 80% of all arrests are for low-level, nonviolent offenses and conduct related to poverty.
+The direct stakeholders impacted by research into this dataset are people from Vera who created the data set and people who use the information for research or journal. The indirect stakeholders affected by the data set are the prisoners and people who have worked in and with the field of Incarceration in the United States. In this vein, the central value should be we should protect the specific prisoner information a little more.
+And my question is, has the injustice trend in the incarceration field towards certain races increased over the year?
 
 ## Data Summary 
-[TODO]
+```{r Data Summary}
+blackprop_2018 - blackprop_1998
 
-[TODO ... other sections ... See Canvas for details]
+whiteprop_2018 - whiteprop_1998
+
+latinprop_2018 - latinprop_1998
+
+asianprop_2018 - asianprop_1998
+```
+Because I'm trying to find if the injustice trend to certain races has increased or not in the incarceration field, I took the recent proportion of people in prison for African Americans, white, Latinos, and Asian and compared them with the data about them 20 years ago. And according to the four values, the proportions for Latinos and Asians do not change much, and they decrease a little. The proportion of African Americans has decreased by about 8 percent, and the proportion of white people has increased by about 6 percent.
+
+##Growth of the U.S. Prison Population
+```{r Growth of the U.S. Prison Population}
+get_year_jail_pop()
+plot_jail_pop_for_us()
+```
+The graph shows the increase in jail population from 1970 to 2018, and it reveals a pattern of increasing population in jail in the United States for most of the time, especially between 1980 to 2010, but between 2010 to 2018, there is a showing of decreasing pattern showing. And my question for this graph is, what is the reason behind this decreasing pattern?
+
+##Growth of Prison Population by State
+```{r Growth of Prison Population by state}
+get_jail_pop_by_states(c("GA", "WA", "NV"))
+plot_jail_pop_by_states(c("GA", "WA", "NV"))
+```
+I picked three states for graphing, Georgia, Nevada, and Washington, which are the states I have lived in or currently live in. I chose those states because I want to know the increased jail population of the states I have a history with. And according to the graph, their jail population seems to grow, and Georgia is the state that has the most dramatic change. And my question for this part is, why is a certain state increased more severely than the other state?
+
+##Proportion of Prison Population of African American compared with whole population
+```{r proportion compare}
+get_black_prop_for_us()
+plot_black_prop_for_us()
+```
+To find the inequality pattern, I compared the proportion of African Americans in the jail population with the proportion of African Americans in the United States population from 1970 to 2018. The graph clearly shows that the ratio of African Americans in jail is higher than the proportion of the whole population. This proved the inequality because African Americans took up about 13% of the people in the United States, but their proportion in jail was nearly three times higher. And my question for this graph is, with the reveal of the inequality, what can make the proportion of African Americans in prison lower?
+
+##Map of African American Proportion in Prison by selected year
+```{r map}
+get_black_prop_year(1998)
+plot_black_prop_year(1998)
+get_black_prop_year(2018)
+plot_black_prop_year(2018)
+```
+To find the inequality trend in incarceration geographically, I created maps with the proportion of African Americans in Prison in 2018 and 1998. And from the map in 1998, there is a clear pattern that the southern part of America has a higher proportion than the northern part. And in 2018, the pattern still exists, but it's weaker than in 1998. And my question for this part is how can we improve so that there will be no more inequity in incarceration?
 
 _All the very best with your work!_
-
